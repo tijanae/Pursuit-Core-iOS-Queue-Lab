@@ -1,0 +1,90 @@
+//
+//  QueueExercises.swift
+//  AC-iOS-QueuesExercises
+//
+//  Created by C4Q  on 11/14/17.
+//  Copyright © 2017 C4Q . All rights reserved.
+//
+
+import Foundation
+
+//1. Find the smallest element in a queue
+
+func smallestElement<T: Comparable>(in q: Queue<T>) -> T? {
+    guard !q.isEmpty else {
+        return nil
+    }
+    var q = q
+    var smallestSoFar = q.deQueue()!
+    while !q.isEmpty {
+        let currentElement = q.deQueue()!
+        if currentElement < smallestSoFar {
+            smallestSoFar = currentElement
+        }
+    }
+    return smallestSoFar
+}
+
+//2. Find the sum of a queue of Ints
+
+func sum(of q: Queue<Int>) -> Int {
+    var q = q
+    var sum = 0
+    while !q.isEmpty {
+        sum += q.deQueue()!
+    }
+    return sum
+}
+
+//3. Find out whether or not a queue is in sorted order from smallest to biggest
+/*
+True example:   (Back) 9 - 6 - 2 - 1 (Front)
+False example   (Back) 4 - 19 - 1 - 20 (Front)
+False example   (Back) 4 - 19 - 134 - 200 (Front)
+*/
+
+func isSorted<T: Comparable>(q: Queue<T>) -> Bool {
+    var q = q
+    while !q.isEmpty {
+        let currentElement = q.deQueue()!
+        if let nextElement = q.peek() {
+            if !(currentElement < nextElement) {
+                return false
+            }
+        }
+    }
+    return true
+}
+
+//4. Given a Queue as input, return a reversed queue. (Hint: A stack can be helpful here)
+
+/*
+Sample Input:   (Back) 9 - 16 - 2 - 31 (Front)
+Sample Output:  (Back) 31 - 2 - 16 - 9 (Front)
+ */
+
+func reversed<T>(q: Queue<T>) -> Queue<T> {
+    var q = q
+    var myStack = [T]()
+    while !q.isEmpty {
+        myStack.append(q.deQueue()!)
+    }
+    while !myStack.isEmpty {
+        q.enQueue(myStack.popLast()!)
+    }
+    return q
+}
+
+//5 Determine if two Queues are equal
+
+func areEqual<T: Equatable>(qOne: Queue<T>, qTwo: Queue<T>) -> Bool {
+    var qOne = qOne
+    var qTwo = qTwo
+    while !qOne.isEmpty && !qTwo.isEmpty {
+        if qOne.deQueue()! != qTwo.deQueue()! {
+            return false
+        }
+    }
+    return qOne.isEmpty && qTwo.isEmpty
+}
+
