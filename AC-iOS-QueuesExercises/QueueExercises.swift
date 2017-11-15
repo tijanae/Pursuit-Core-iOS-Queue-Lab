@@ -11,29 +11,13 @@ import Foundation
 //1. Find the smallest element in a queue
 
 func smallestElement<T: Comparable>(in q: Queue<T>) -> T? {
-    guard !q.isEmpty else {
-        return nil
-    }
-    var q = q
-    var smallestSoFar = q.deQueue()!
-    while !q.isEmpty {
-        let currentElement = q.deQueue()!
-        if currentElement < smallestSoFar {
-            smallestSoFar = currentElement
-        }
-    }
-    return smallestSoFar
+    return nil
 }
 
 //2. Find the sum of a queue of Ints
 
 func sum(of q: Queue<Int>) -> Int {
-    var q = q
-    var sum = 0
-    while !q.isEmpty {
-        sum += q.deQueue()!
-    }
-    return sum
+    return 0
 }
 
 //3. Find out whether or not a queue is in sorted order from smallest to biggest
@@ -44,15 +28,6 @@ False example   (Back) 4 - 19 - 134 - 200 (Front)
 */
 
 func isSorted<T: Comparable>(q: Queue<T>) -> Bool {
-    var q = q
-    while !q.isEmpty {
-        let currentElement = q.deQueue()!
-        if let nextElement = q.peek() {
-            if !(currentElement < nextElement) {
-                return false
-            }
-        }
-    }
     return true
 }
 
@@ -64,27 +39,12 @@ Sample Output:  (Back) 31 - 2 - 16 - 9 (Front)
  */
 
 func reversed<T>(q: Queue<T>) -> Queue<T> {
-    var q = q
-    var myStack = [T]()
-    while !q.isEmpty {
-        myStack.append(q.deQueue()!)
-    }
-    while !myStack.isEmpty {
-        q.enQueue(myStack.popLast()!)
-    }
     return q
 }
 
 //5 Determine if two Queues are equal
 
 func areEqual<T: Equatable>(qOne: Queue<T>, qTwo: Queue<T>) -> Bool {
-    var qOne = qOne
-    var qTwo = qTwo
-    while !qOne.isEmpty && !qTwo.isEmpty {
-        if qOne.deQueue()! != qTwo.deQueue()! {
-            return false
-        }
-    }
-    return qOne.isEmpty && qTwo.isEmpty
+    return false
 }
 
