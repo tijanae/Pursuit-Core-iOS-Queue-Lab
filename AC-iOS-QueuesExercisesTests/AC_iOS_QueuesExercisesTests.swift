@@ -1,11 +1,3 @@
-//
-//  AC_iOS_QueuesExercisesTests.swift
-//  AC-iOS-QueuesExercisesTests
-//
-//  Created by C4Q  on 11/14/17.
-//  Copyright © 2017 C4Q . All rights reserved.
-//
-
 import XCTest
 @testable import AC_iOS_QueuesExercises
 
@@ -29,7 +21,7 @@ class AC_iOS_QueuesExercisesTests: XCTestCase {
         
         otherQueue.enqueue(8)
         otherQueue.enqueue(11)
-        otherQueue.enqueue(4)
+        otherQueue.enqueue(9)
         
     }
     
@@ -43,12 +35,12 @@ class AC_iOS_QueuesExercisesTests: XCTestCase {
     
     func testSum() {
         XCTAssertTrue(sum(of: myQueue) == 45)
-        XCTAssertTrue(sum(of: otherQueue) == 23)
+        XCTAssertTrue(sum(of: otherQueue) == 28)
     }
     
     func testSmallest() {
         XCTAssertTrue(smallestElement(in: myQueue) == 5)
-        XCTAssertTrue(smallestElement(in: otherQueue) == 4)
+        XCTAssertTrue(smallestElement(in: otherQueue) == 8)
         XCTAssertNil(smallestElement(in: emptyQueue))
     }
     
@@ -81,7 +73,7 @@ class AC_iOS_QueuesExercisesTests: XCTestCase {
         var otherQueueCopy = Queue<Int>()
         otherQueueCopy.enqueue(8)
         otherQueueCopy.enqueue(11)
-        otherQueueCopy.enqueue(4)
+        otherQueueCopy.enqueue(9)
         
         XCTAssertTrue(areEqual(qOne: myQueue, qTwo: myQueueCopy))
         XCTAssertTrue(areEqual(qOne: otherQueue, qTwo: otherQueueCopy))

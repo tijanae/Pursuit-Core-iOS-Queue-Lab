@@ -1,11 +1,3 @@
-//
-//  Queue.swift
-//  AC-iOS-QueuesExercises
-//
-//  Created by C4Q  on 11/14/17.
-//  Copyright © 2017 C4Q . All rights reserved.
-//
-
 import Foundation
 
 class Node<Key> {
