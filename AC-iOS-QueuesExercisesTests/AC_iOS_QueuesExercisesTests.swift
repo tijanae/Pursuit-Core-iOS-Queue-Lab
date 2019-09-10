@@ -18,23 +18,26 @@ class AC_iOS_QueuesExercisesTests: XCTestCase {
     override func setUp() {
         super.setUp()
         var myQ = Queue<Int>()
-        myQ.enQueue(39)
-        myQ.enQueue(10)
-        myQ.enQueue(7)
+        myQ.enqueue(39)
+        myQ.enqueue(10)
+        myQ.enqueue(7)
                 
-        myQueue.enQueue(5)
-        myQueue.enQueue(10)
-        myQueue.enQueue(13)
-        myQueue.enQueue(17)
+        myQueue.enqueue(5)
+        myQueue.enqueue(10)
+        myQueue.enqueue(13)
+        myQueue.enqueue(17)
         
-        otherQueue.enQueue(8)
-        otherQueue.enQueue(11)
-        otherQueue.enQueue(4)
+        otherQueue.enqueue(8)
+        otherQueue.enqueue(11)
+        otherQueue.enqueue(4)
         
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        myQueue = Queue<Int>()
+        otherQueue = Queue<Int>()
+        emptyQueue = Queue<Int>()
+
         super.tearDown()
     }
     
@@ -56,41 +59,33 @@ class AC_iOS_QueuesExercisesTests: XCTestCase {
     
     func testReverse() {
         var reversedMyQueue = Queue<Int>()
-        reversedMyQueue.enQueue(17)
-        reversedMyQueue.enQueue(13)
-        reversedMyQueue.enQueue(10)
-        reversedMyQueue.enQueue(5)
+        reversedMyQueue.enqueue(17)
+        reversedMyQueue.enqueue(13)
+        reversedMyQueue.enqueue(10)
+        reversedMyQueue.enqueue(5)
         var userReversed = reversed(q: myQueue)
         
         while !(reversedMyQueue.isEmpty) && !(userReversed.isEmpty) {
-            XCTAssertTrue(reversedMyQueue.deQueue() == userReversed.deQueue())
+            XCTAssertTrue(reversedMyQueue.dequeue() == userReversed.dequeue())
         }
         XCTAssertNil(reversed(q: emptyQueue).peek())
     }
     
     func testEquals() {
         var myQueueCopy = Queue<Int>()
-        myQueueCopy.enQueue(5)
-        myQueueCopy.enQueue(10)
-        myQueueCopy.enQueue(13)
-        myQueueCopy.enQueue(17)
+        myQueueCopy.enqueue(5)
+        myQueueCopy.enqueue(10)
+        myQueueCopy.enqueue(13)
+        myQueueCopy.enqueue(17)
         
         var otherQueueCopy = Queue<Int>()
-        otherQueueCopy.enQueue(8)
-        otherQueueCopy.enQueue(11)
-        otherQueueCopy.enQueue(4)
+        otherQueueCopy.enqueue(8)
+        otherQueueCopy.enqueue(11)
+        otherQueueCopy.enqueue(4)
         
         XCTAssertTrue(areEqual(qOne: myQueue, qTwo: myQueueCopy))
         XCTAssertTrue(areEqual(qOne: otherQueue, qTwo: otherQueueCopy))
         XCTAssertFalse(areEqual(qOne: myQueue, qTwo: otherQueue))
         XCTAssertFalse(areEqual(qOne: otherQueueCopy, qTwo: emptyQueue))
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
+    }    
 }
