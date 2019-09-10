@@ -1,11 +1,3 @@
-//
-//  Queue.swift
-//  AC-iOS-QueuesExercises
-//
-//  Created by C4Q  on 11/14/17.
-//  Copyright © 2017 C4Q . All rights reserved.
-//
-
 import Foundation
 
 class Node<Key> {
@@ -22,7 +14,7 @@ struct Queue<T> {
     var isEmpty: Bool {
         return head == nil
     }
-    mutating func enQueue(_ newElement: T) {
+    mutating func enqueue(_ newElement: T) {
         let newNode = Node(val: newElement)
         guard let tail = tail else {
             self.head = newNode
@@ -32,7 +24,7 @@ struct Queue<T> {
         tail.next = newNode
         self.tail = newNode
     }
-    mutating func deQueue() -> T? {
+    mutating func dequeue() -> T? {
         guard let oldHead = head else {
             return nil
         }
