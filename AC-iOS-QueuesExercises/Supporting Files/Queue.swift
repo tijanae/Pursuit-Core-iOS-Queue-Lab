@@ -35,3 +35,36 @@ struct Queue<T> {
         return self.head?.val
     }
 }
+
+struct Stack<T> {
+    private var head: Node<T>?
+    private var tail: Node<T>?
+    
+    var isEmpty: Bool {
+        return head == nil
+    }
+    
+    mutating func push(value: T) {
+        let newNode = Node(val: value)
+        guard head == nil else {
+         return head = newNode}
+        var currentNode = head
+        currentNode?.next = newNode
+        head = newNode
+    }
+    
+    mutating func pop() -> T? {
+        var removedNode: Node<T>?
+        
+        guard head == nil else { return nil }
+        
+        var currentNode = head
+        head = currentNode?.next
+        
+        return currentNode?.val
+    }
+    
+    
+    
+    
+}
